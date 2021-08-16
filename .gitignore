@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+*.egg-info
+
+build/
+dist/
+
+*.pem
+*.crt
+*.pfx
+*.cer
+*.ccache
