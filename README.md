@@ -6,7 +6,7 @@ Utility to play with ADCS, allows to request tickets and collect information abo
 
 To request a certificate you can use the req command:
 ```
-$ getTGT.py 'contoso.local/Anakin:Vader1234!'ader1234!'
+$ getTGT.py 'contoso.local/Anakin:Vader1234!'
 Impacket v0.9.23 - Copyright 2021 SecureAuth Corporation
 
 [*] Saving ticket in Anakin.ccache
@@ -26,7 +26,7 @@ $ certi.py req 'contoso.local/Anakin@dc01.contoso.local' contoso-DC01-CA -k -n
 [*] Saving certificate in Anakin.pfx (password: admin)
 ```
 
-As you may notice, you need to use Kerberos, since is the authentication method required by enrollment services. In case using other method you will get the following error:
+Depending on the enrollment service, you may need to use NTLM or Kerberos authentication to get access to it, so be sure to check both. Following is the error triggered when NTLM is not allowed and you should use Kerberos:
 ```
 (certi) certi$ certi.py req 'contoso.local/Anakin:Vader1234!@dc01.contoso.local' contoso-DC01-CA
 Error: WCCE SessionError: code: 0x80094011 - CERTSRV_E_ENROLL_DENIED - The permissions on this CA do not allow the current user to enroll for certificates.
