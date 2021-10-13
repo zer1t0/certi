@@ -1,6 +1,6 @@
 # certi
 
-Utility to play with ADCS, allows to request tickets and collect information about related objects. Basically, it's the impacket copy of [Certify](https://github.com/GhostPack/Certify). Thanks to [@harmj0y](https://twitter.com/harmj0y) and [@tifkin_](https://twitter.com/tifkin_) for [its great work with ADCS](https://www.specterops.io/assets/resources/an_ace_up_the_sleeve.pdf).
+Utility to play with ADCS, allows to request tickets and collect information about related objects. Basically, it's the impacket copy of [Certify](https://github.com/GhostPack/Certify). Thanks to [@harmj0y](https://twitter.com/harmj0y) and [@tifkin_](https://twitter.com/tifkin_) for [its great work with ADCS](https://www.specterops.io/assets/resources/Certified_Pre-Owned.pdf).
 
 ## Request a certificate
 
