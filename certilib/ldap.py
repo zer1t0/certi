@@ -21,6 +21,7 @@ def connect_ldap(
         aesKey="",
         dc_ip=None,
         kerberos=False,
+        ssl=False,
 ):
 
     base_dn = get_base_dn(domain)
@@ -33,8 +34,11 @@ def connect_ldap(
         else:
             target = domain
 
+    protocol = "ldaps" if ssl else "ldap"
+    url = "%s://%s" % (protocol, target)
+
     ldap_conn = ldap.LDAPConnection(
-        url='ldap://%s' % target,
+        url=url,
         baseDN=base_dn,
         dstIp=dc_ip
     )
