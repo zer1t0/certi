@@ -92,6 +92,12 @@ def parse_args():
         help="LM and NT hashes, format is LMHASH:NTHASH",
     )
 
+    list_parser.add_argument(
+        "--ssl",
+        action="store_true",
+        help="Use LDAPS instead of LDAP",
+    )
+
     req_parser = subparsers.add_parser("req")
 
     req_parser.add_argument(
@@ -403,7 +409,8 @@ def main_list(args):
         nthash=args.nthash,
         aesKey=args.aes,
         dc_ip=args.dc_ip,
-        kerberos=args.kerberos
+        kerberos=args.kerberos,
+        ssl=args.ssl,
     )
 
     sids_resolver = SidsResolver(ldap_conn)
