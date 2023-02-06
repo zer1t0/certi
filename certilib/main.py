@@ -414,22 +414,22 @@ def main_list(args):
     )
 
     sids_resolver = SidsResolver(ldap_conn)
-
+    domain_root=".".join(args.userdomain.split(".")[-2:])
     if "ca" in args.classes:
         print("[*] Root CAs\n")
-        for cert in fetch_root_cas(ldap_conn, args.userdomain):
+        for cert in fetch_root_cas(ldap_conn, domain_root):
             print_cert(cert)
             print("")
 
             print("[*] Authority Information Access\n")
-            for cert in fetch_aia_cas(ldap_conn, args.userdomain):
+            for cert in fetch_aia_cas(ldap_conn, domain_root):
                 print_cert(cert)
                 print("")
 
 
     if "ntauth" in args.classes:
         print("[*] NtAuthCertificates - Certificates that enable authentication\n")
-        for cert in fetch_ntauthcertificates(ldap_conn, args.userdomain):
+        for cert in fetch_ntauthcertificates(ldap_conn, domain_root):
             print_cert(cert)
             print("")
 
@@ -439,7 +439,7 @@ def main_list(args):
         print("[*] Enrollment Services\n")
         enroll_services = list(fetch_enrollment_services(
             ldap_conn,
-            args.userdomain
+            domain_root
         ))
         for service in enroll_services:
             print_service(service)
@@ -449,14 +449,14 @@ def main_list(args):
     if "template" in args.classes:
         templates = list(fetch_templates(
             ldap_conn,
-            args.userdomain,
+            domain_root,
             temp_names=args.temp_name,
             ldap_filter=args.temp_filter,
         ))
         if not enroll_services:
             enroll_services = list(fetch_enrollment_services(
                 ldap_conn,
-                args.userdomain
+                domain_root
             ))
 
         for template in templates:
